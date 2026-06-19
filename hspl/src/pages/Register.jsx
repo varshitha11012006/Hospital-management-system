@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Register() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function Register() {
 
       setTimeout(() => {
         navigate("/login");
-      }, 1000);
+      }, 1200);
 
     } catch (error) {
       setMessage(error.response?.data?.message || "Register Failed");
@@ -37,159 +38,302 @@ function Register() {
   };
 
   return (
-    <div
-      className="d-flex align-items-center justify-content-center"
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(135deg, #0f172a, #1e293b)",
-        padding: "20px",
-      }}
-    >
-      <div
-        className="row shadow-lg"
-        style={{
-          width: "100%",
-          maxWidth: "1000px",
-          borderRadius: "18px",
-          overflow: "hidden",
-          background: "#fff",
-        }}
-      >
+    <div className="register-page">
 
-        {/* LEFT IMAGE SIDE */}
-        <div className="col-md-6 d-none d-md-block p-0">
-          <img
-            src="register.jpg"
-            alt="register"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              filter: "brightness(0.95)",
-            }}
-          />
+      {/* BACKGROUND ORBS */}
+      <div className="bg-orbs"></div>
+
+      <div className="register-card">
+
+        {/* LEFT PANEL */}
+        <div className="left-panel d-none d-md-flex flex-column justify-content-between">
+
+          <div>
+            <Link to="/" className="home-btn">← Back to Home</Link>
+          </div>
+
+          <div>
+            <div className="badge-glass">Enterprise Identity Hub</div>
+
+            <h1 className="hero-title">
+              Build Your <br />
+              <span className="highlight">Smart Healthcare Identity</span>
+            </h1>
+
+            <p className="hero-text">
+              Create a secure account to access enterprise-grade hospital management systems with role-based authentication.
+            </p>
+          </div>
+
+          <div className="footer-text">
+            © {new Date().getFullYear()} HSPL Enterprise Systems
+          </div>
+
         </div>
 
-        {/* RIGHT FORM SIDE */}
-        <div className="col-md-6 p-5">
+        {/* RIGHT PANEL */}
+        <div className="right-panel">
 
-          <h2
-            className="text-center fw-bold mb-1"
-            style={{
-              color: "#0f172a",
-              letterSpacing: "0.5px",
-            }}
-          >
-            Create Account
-          </h2>
+          <div className="form-box">
 
-          <p className="text-center text-muted mb-4">
-            Join HSPL Hospital System
-          </p>
+            <h2 className="title">Create Account</h2>
+            <p className="sub-title">Join HSPL System</p>
 
-          {message && (
-            <div
-              className="alert alert-info"
-              style={{
-                borderRadius: "10px",
-                fontSize: "14px",
-              }}
-            >
-              {message}
+            {message && (
+              <div className="alert alert-info py-2 small">
+                {message}
+              </div>
+            )}
+
+            <form onSubmit={handleRegister}>
+
+              {/* NAME */}
+              <label className="form-label small fw-bold">FULL NAME</label>
+              <div className="input-group mb-3">
+                <span className="input-group-text">👤</span>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+
+              {/* ROLE */}
+              <label className="form-label small fw-bold">ROLE</label>
+              <div className="input-group mb-3">
+                <span className="input-group-text">🏷️</span>
+                <select
+                  className="form-select"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                >
+                  <option>Admin</option>
+                  <option>Doctor</option>
+                  <option>Patient</option>
+                </select>
+              </div>
+
+              {/* EMAIL */}
+              <label className="form-label small fw-bold">EMAIL</label>
+              <div className="input-group mb-3">
+                <span className="input-group-text">📧</span>
+                <input
+                  type="email"
+                  className="form-control"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
+              {/* PASSWORD */}
+              <label className="form-label small fw-bold">PASSWORD</label>
+              <div className="input-group mb-3">
+                <span className="input-group-text">🔒</span>
+                <input
+                  type="password"
+                  className="form-control"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+
+              {/* BUTTON */}
+              <button type="submit" className="btn register-btn w-100 mt-2">
+                Create Account
+              </button>
+
+            </form>
+
+            <div className="links mt-4 d-flex justify-content-between">
+              <Link to="/login">Already have account?</Link>
+              <Link to="/">Home</Link>
             </div>
-          )}
 
-          <form onSubmit={handleRegister}>
-
-            <input
-              type="text"
-              className="form-control mb-3"
-              placeholder="Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              style={inputStyle}
-            />
-
-            <select
-              className="form-select mb-3"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              style={inputStyle}
-            >
-              <option>Admin</option>
-              <option>Doctor</option>
-              <option>Patient</option>
-            </select>
-
-            <input
-              type="email"
-              className="form-control mb-3"
-              placeholder="Email Address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={inputStyle}
-            />
-
-            <input
-              type="password"
-              className="form-control mb-4"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={inputStyle}
-            />
-
-            <button
-              className="btn btn-success w-100 fw-bold"
-              style={buttonStyle}
-              onMouseOver={(e) =>
-                (e.currentTarget.style.transform = "translateY(-2px)")
-              }
-              onMouseOut={(e) =>
-                (e.currentTarget.style.transform = "translateY(0px)")
-              }
-            >
-              Create Account
-            </button>
-
-          </form>
-
-          <div className="text-center mt-3">
-            <Link
-              to="/login"
-              style={{ textDecoration: "none", color: "#0d6efd" }}
-            >
-              Already have an account?
-            </Link>
-          </div>
-
-          <div className="text-center mt-2">
-            <Link
-              to="/"
-              style={{ textDecoration: "none", color: "#64748b" }}
-            >
-              Back to Home
-            </Link>
           </div>
 
         </div>
+
       </div>
+
+      {/* STYLE */}
+      <style>{`
+        html, body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: #020617;
+          font-family: "Segoe UI", sans-serif;
+        }
+
+        /* FULL PAGE */
+        .register-page{
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+
+        /* FLOATING ORBS */
+        .bg-orbs::before,
+        .bg-orbs::after{
+          content:"";
+          position:absolute;
+          width: 600px;
+          height: 600px;
+          border-radius: 50%;
+          filter: blur(140px);
+          opacity: 0.35;
+          animation: float 12s infinite ease-in-out;
+        }
+
+        .bg-orbs::before{
+          background: #6d54fd;
+          top: -150px;
+          left: -150px;
+        }
+
+        .bg-orbs::after{
+          background: #34d399;
+          bottom: -150px;
+          right: -150px;
+          animation-delay: 3s;
+        }
+
+        /* CARD */
+        .register-card{
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          z-index: 2;
+        }
+
+        /* LEFT */
+        .left-panel{
+          flex: 1;
+          padding: 70px;
+          background: linear-gradient(135deg, #4f46e5, #6d54fd, #8b5cf6);
+          color: white;
+        }
+
+        .home-btn{
+          color: white;
+          text-decoration: none;
+          padding: 8px 12px;
+          border-radius: 10px;
+          background: rgba(255,255,255,0.15);
+          border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .badge-glass{
+          display: inline-block;
+          padding: 6px 12px;
+          border-radius: 999px;
+          background: rgba(255,255,255,0.15);
+          border: 1px solid rgba(255,255,255,0.2);
+          font-size: 12px;
+          margin-bottom: 20px;
+        }
+
+        .hero-title{
+          font-size: 52px;
+          font-weight: 800;
+          line-height: 1.1;
+        }
+
+        .highlight{
+          background: linear-gradient(to right, #34d399, #2dd4bf);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text{
+          margin-top: 15px;
+          opacity: 0.9;
+          max-width: 420px;
+        }
+
+        .footer-text{
+          font-size: 12px;
+          opacity: 0.6;
+        }
+
+        /* RIGHT */
+        .right-panel{
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(248,249,250,0.92);
+          backdrop-filter: blur(30px);
+        }
+
+        .form-box{
+          width: 100%;
+          max-width: 420px;
+          background: rgba(255,255,255,0.75);
+          border: 1px solid rgba(255,255,255,0.5);
+          padding: 40px;
+          border-radius: 22px;
+          box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+          backdrop-filter: blur(25px);
+          animation: fadeIn 0.8s ease;
+        }
+
+        .title{
+          font-weight: 700;
+          color: #111827;
+        }
+
+        .sub-title{
+          font-size: 13px;
+          color: #6b7280;
+          margin-bottom: 20px;
+        }
+
+        .register-btn{
+          background: linear-gradient(135deg, #10b981, #34d399);
+          color: white;
+          font-weight: 600;
+          padding: 12px;
+          border-radius: 12px;
+          border: none;
+          transition: 0.3s;
+          box-shadow: 0 10px 30px rgba(16,185,129,0.3);
+        }
+
+        .register-btn:hover{
+          transform: translateY(-2px) scale(1.01);
+          box-shadow: 0 15px 40px rgba(16,185,129,0.4);
+        }
+
+        .form-control, .form-select{
+          border-radius: 12px !important;
+          background: rgba(255,255,255,0.7) !important;
+        }
+
+        /* ANIMATION */
+        @keyframes float{
+          0%,100%{ transform: translateY(0); }
+          50%{ transform: translateY(30px); }
+        }
+
+        @keyframes fadeIn{
+          from{ opacity:0; transform: translateY(10px); }
+          to{ opacity:1; transform: translateY(0); }
+        }
+
+        @media(max-width:768px){
+          .left-panel{ display:none; }
+        }
+      `}</style>
+
     </div>
   );
 }
-
-const inputStyle = {
-  borderRadius: "10px",
-  padding: "10px",
-  border: "1px solid #e2e8f0",
-  outline: "none",
-  transition: "0.3s",
-};
-
-const buttonStyle = {
-  borderRadius: "10px",
-  padding: "10px",
-  transition: "0.3s",
-};
 
 export default Register;
