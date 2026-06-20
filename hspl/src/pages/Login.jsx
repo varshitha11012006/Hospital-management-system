@@ -15,11 +15,14 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-        role: role.trim().toLowerCase(),
-      });
+      const res = await axios.post(
+        "https://hospital-management-mern-q5r4.onrender.com/api/auth/login",
+        {
+          email,
+          password,
+          role: role.trim().toLowerCase(),
+        }
+      );
 
       setMessage(res.data.message);
 
@@ -40,7 +43,6 @@ function Login() {
 
       <div className="login-card">
 
-        {/* LEFT */}
         <div className="left-panel d-none d-md-flex flex-column justify-content-between">
 
           <div>
@@ -66,13 +68,17 @@ function Login() {
 
         </div>
 
-        {/* RIGHT */}
+
         <div className="right-panel">
 
           <div className="login-box">
 
             <h2>Welcome Back</h2>
-            <p className="text-muted small">Login to continue</p>
+
+            <p className="text-muted small">
+              Login to continue
+            </p>
+
 
             {message && (
               <div className="alert alert-info py-2 small">
@@ -80,11 +86,16 @@ function Login() {
               </div>
             )}
 
+
             <form onSubmit={handleLogin}>
 
-              <label className="form-label small fw-bold">Role</label>
+
+              <label className="form-label small fw-bold">
+                Role
+              </label>
+
               <div className="input-group mb-3">
-                <span className="input-group-text">👤</span>
+
                 <select
                   className="form-select"
                   value={role}
@@ -94,40 +105,66 @@ function Login() {
                   <option>Doctor</option>
                   <option>Patient</option>
                 </select>
+
               </div>
 
-              <label className="form-label small fw-bold">Email</label>
+
+
+              <label className="form-label small fw-bold">
+                Email
+              </label>
+
               <div className="input-group mb-3">
-                <span className="input-group-text">📧</span>
+
                 <input
                   type="email"
                   className="form-control"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
+
               </div>
 
-              <label className="form-label small fw-bold">Password</label>
+
+
+
+              <label className="form-label small fw-bold">
+                Password
+              </label>
+
               <div className="input-group mb-3">
-                <span className="input-group-text">🔒</span>
+
                 <input
                   type="password"
                   className="form-control"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+
               </div>
+
+
 
               <button type="submit" className="btn w-100 login-btn">
                 Login
               </button>
 
+
             </form>
 
+
             <div className="links mt-3 d-flex justify-content-between">
-              <Link to="/register">Create Account</Link>
-              <Link to="/">Home</Link>
+
+              <Link to="/register">
+                Create Account
+              </Link>
+
+              <Link to="/">
+                Home
+              </Link>
+
             </div>
+
 
           </div>
 
@@ -135,7 +172,8 @@ function Login() {
 
       </div>
 
-      {/* STYLE */}
+
+
       <style>{`
         html, body {
           margin: 0;
@@ -146,121 +184,134 @@ function Login() {
         }
 
         .login-page{
-          width: 100vw;
-          height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background: radial-gradient(circle at top, #0f172a, #020617);
+          width:100vw;
+          height:100vh;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          background:radial-gradient(circle at top,#0f172a,#020617);
         }
 
         .login-card{
-          width: 100vw;
-          height: 100vh;
-          display: flex;
-          overflow: hidden;
+          width:100vw;
+          height:100vh;
+          display:flex;
+          overflow:hidden;
         }
 
-        /* LEFT */
+
         .left-panel{
-          flex: 1;
-          padding: 60px;
-          background: linear-gradient(135deg, #5138ee, #6d54fd, #8970ff);
-          color: white;
+          flex:1;
+          padding:60px;
+          background:linear-gradient(135deg,#5138ee,#6d54fd,#8970ff);
+          color:white;
         }
+
 
         .home-btn{
-          color: white;
-          text-decoration: none;
-          padding: 8px 12px;
-          border-radius: 10px;
-          background: rgba(255,255,255,0.15);
-          border: 1px solid rgba(255,255,255,0.2);
+          color:white;
+          text-decoration:none;
+          padding:8px 12px;
+          border-radius:10px;
+          background:rgba(255,255,255,0.15);
+          border:1px solid rgba(255,255,255,0.2);
         }
+
 
         .badge-glass{
-          display: inline-block;
-          padding: 6px 12px;
-          border-radius: 999px;
-          background: rgba(255,255,255,0.15);
-          border: 1px solid rgba(255,255,255,0.2);
-          font-size: 12px;
-          margin-bottom: 20px;
+          display:inline-block;
+          padding:6px 12px;
+          border-radius:999px;
+          background:rgba(255,255,255,0.15);
+          border:1px solid rgba(255,255,255,0.2);
+          font-size:12px;
+          margin-bottom:20px;
         }
+
 
         .hero-title{
-          font-size: 48px;
-          font-weight: 800;
-          line-height: 1.2;
+          font-size:48px;
+          font-weight:800;
+          line-height:1.2;
         }
+
 
         .highlight{
-          background: linear-gradient(to right, #34d399, #2dd4bf);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          background:linear-gradient(to right,#34d399,#2dd4bf);
+          -webkit-background-clip:text;
+          -webkit-text-fill-color:transparent;
         }
+
 
         .hero-text{
-          margin-top: 15px;
-          opacity: 0.9;
-          max-width: 400px;
+          margin-top:15px;
+          opacity:0.9;
+          max-width:400px;
         }
+
 
         .footer-text{
-          font-size: 12px;
-          opacity: 0.6;
+          font-size:12px;
+          opacity:0.6;
         }
 
-        /* RIGHT */
+
         .right-panel{
-          flex: 1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background: #f8f9fa;
+          flex:1;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          background:#f8f9fa;
         }
+
 
         .login-box{
-          width: 100%;
-          max-width: 400px;
-          background: white;
-          padding: 35px;
-          border-radius: 18px;
-          box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+          width:100%;
+          max-width:400px;
+          background:white;
+          padding:35px;
+          border-radius:18px;
+          box-shadow:0 8px 30px rgba(0,0,0,0.05);
         }
+
 
         .login-btn{
-          background: linear-gradient(135deg, #6d54fd, #8970ff);
-          color: white;
-          font-weight: 600;
-          padding: 10px;
-          border-radius: 10px;
+          background:linear-gradient(135deg,#6d54fd,#8970ff);
+          color:white;
+          font-weight:600;
+          padding:10px;
+          border-radius:10px;
         }
+
 
         .login-btn:hover{
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(109,84,253,0.4);
+          transform:translateY(-2px);
+          box-shadow:0 10px 25px rgba(109,84,253,0.4);
         }
+
 
         .links a{
-          font-size: 13px;
-          color: #6d54fd;
-          text-decoration: none;
+          font-size:13px;
+          color:#6d54fd;
+          text-decoration:none;
         }
+
 
         .links a:hover{
-          text-decoration: underline;
+          text-decoration:underline;
         }
 
-        @media (max-width: 768px){
+
+        @media(max-width:768px){
           .left-panel{
-            display: none;
+            display:none;
           }
 
           .right-panel{
-            flex: 1;
+            flex:1;
           }
         }
+
       `}</style>
 
     </div>

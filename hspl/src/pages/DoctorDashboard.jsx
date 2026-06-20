@@ -15,7 +15,7 @@ function DoctorDashboard() {
       setLoading(true);
 
       const res = await axios.get(
-        `http://localhost:5000/api/appointments/doctor/${user._id}`
+        `https://hospital-management-mern-q5r4.onrender.com/api/appointments/doctor/${user._id}`
       );
 
       setAppointments(res.data);
@@ -41,13 +41,13 @@ function DoctorDashboard() {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   const saveNote = async (id) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/appointments/note/${id}`,
+        `https://hospital-management-mern-q5r4.onrender.com/api/appointments/note/${id}`,
         {
           note: notes[id] || "",
         }
@@ -64,7 +64,7 @@ function DoctorDashboard() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/appointments/status/${id}`,
+        `https://hospital-management-mern-q5r4.onrender.com/api/appointments/status/${id}`,
         {
           status,
         }

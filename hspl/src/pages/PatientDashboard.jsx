@@ -17,7 +17,7 @@ function PatientDashboard() {
   const loadAppointments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/appointments/patient/${user._id}`
+        `https://hospital-management-mern-q5r4.onrender.com/api/appointments/patient/${user._id}`
       );
 
       setAppointments(res.data);
@@ -29,7 +29,7 @@ function PatientDashboard() {
   const loadDoctors = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/auth/doctors"
+        "https://hospital-management-mern-q5r4.onrender.com/api/auth/doctors"
       );
 
       setDoctors(res.data);
@@ -45,7 +45,7 @@ function PatientDashboard() {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   const bookAppointment = async (e) => {
@@ -60,7 +60,7 @@ function PatientDashboard() {
       setLoading(true);
 
       await axios.post(
-        "http://localhost:5000/api/appointments/book",
+        "https://hospital-management-mern-q5r4.onrender.com/api/appointments/book",
         {
           patientId: user._id,
           doctorId,
@@ -93,7 +93,7 @@ function PatientDashboard() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/appointments/${id}`
+        `https://hospital-management-mern-q5r4.onrender.com/api/appointments/${id}`
       );
 
       loadAppointments();

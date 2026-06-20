@@ -17,7 +17,7 @@ function Register() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://hospital-management-mern-q5r4.onrender.com/api/auth/register",
         {
           name,
           email,
@@ -40,12 +40,10 @@ function Register() {
   return (
     <div className="register-page">
 
-      {/* BACKGROUND ORBS */}
       <div className="bg-orbs"></div>
 
       <div className="register-card">
 
-        {/* LEFT PANEL */}
         <div className="left-panel d-none d-md-flex flex-column justify-content-between">
 
           <div>
@@ -71,7 +69,7 @@ function Register() {
 
         </div>
 
-        {/* RIGHT PANEL */}
+
         <div className="right-panel">
 
           <div className="form-box">
@@ -87,10 +85,11 @@ function Register() {
 
             <form onSubmit={handleRegister}>
 
-              {/* NAME */}
-              <label className="form-label small fw-bold">FULL NAME</label>
+              <label className="form-label small fw-bold">
+                FULL NAME
+              </label>
+
               <div className="input-group mb-3">
-                <span className="input-group-text">👤</span>
                 <input
                   type="text"
                   className="form-control"
@@ -99,10 +98,12 @@ function Register() {
                 />
               </div>
 
-              {/* ROLE */}
-              <label className="form-label small fw-bold">ROLE</label>
+
+              <label className="form-label small fw-bold">
+                ROLE
+              </label>
+
               <div className="input-group mb-3">
-                <span className="input-group-text">🏷️</span>
                 <select
                   className="form-select"
                   value={role}
@@ -114,10 +115,12 @@ function Register() {
                 </select>
               </div>
 
-              {/* EMAIL */}
-              <label className="form-label small fw-bold">EMAIL</label>
+
+              <label className="form-label small fw-bold">
+                EMAIL
+              </label>
+
               <div className="input-group mb-3">
-                <span className="input-group-text">📧</span>
                 <input
                   type="email"
                   className="form-control"
@@ -126,10 +129,12 @@ function Register() {
                 />
               </div>
 
-              {/* PASSWORD */}
-              <label className="form-label small fw-bold">PASSWORD</label>
+
+              <label className="form-label small fw-bold">
+                PASSWORD
+              </label>
+
               <div className="input-group mb-3">
-                <span className="input-group-text">🔒</span>
                 <input
                   type="password"
                   className="form-control"
@@ -138,17 +143,19 @@ function Register() {
                 />
               </div>
 
-              {/* BUTTON */}
+
               <button type="submit" className="btn register-btn w-100 mt-2">
                 Create Account
               </button>
 
             </form>
 
+
             <div className="links mt-4 d-flex justify-content-between">
               <Link to="/login">Already have account?</Link>
               <Link to="/">Home</Link>
             </div>
+
 
           </div>
 
@@ -156,7 +163,7 @@ function Register() {
 
       </div>
 
-      {/* STYLE */}
+
       <style>{`
         html, body {
           margin: 0;
@@ -168,7 +175,6 @@ function Register() {
           font-family: "Segoe UI", sans-serif;
         }
 
-        /* FULL PAGE */
         .register-page{
           width: 100vw;
           height: 100vh;
@@ -178,158 +184,154 @@ function Register() {
           position: relative;
         }
 
-        /* FLOATING ORBS */
         .bg-orbs::before,
         .bg-orbs::after{
           content:"";
           position:absolute;
-          width: 600px;
-          height: 600px;
-          border-radius: 50%;
-          filter: blur(140px);
-          opacity: 0.35;
-          animation: float 12s infinite ease-in-out;
+          width:600px;
+          height:600px;
+          border-radius:50%;
+          filter:blur(140px);
+          opacity:0.35;
+          animation:float 12s infinite ease-in-out;
         }
 
         .bg-orbs::before{
-          background: #6d54fd;
-          top: -150px;
-          left: -150px;
+          background:#6d54fd;
+          top:-150px;
+          left:-150px;
         }
 
         .bg-orbs::after{
-          background: #34d399;
-          bottom: -150px;
-          right: -150px;
-          animation-delay: 3s;
+          background:#34d399;
+          bottom:-150px;
+          right:-150px;
+          animation-delay:3s;
         }
 
-        /* CARD */
         .register-card{
-          width: 100vw;
-          height: 100vh;
-          display: flex;
-          z-index: 2;
+          width:100vw;
+          height:100vh;
+          display:flex;
+          z-index:2;
         }
 
-        /* LEFT */
         .left-panel{
-          flex: 1;
-          padding: 70px;
-          background: linear-gradient(135deg, #4f46e5, #6d54fd, #8b5cf6);
-          color: white;
+          flex:1;
+          padding:70px;
+          background:linear-gradient(135deg,#4f46e5,#6d54fd,#8b5cf6);
+          color:white;
         }
 
         .home-btn{
-          color: white;
-          text-decoration: none;
-          padding: 8px 12px;
-          border-radius: 10px;
-          background: rgba(255,255,255,0.15);
-          border: 1px solid rgba(255,255,255,0.2);
+          color:white;
+          text-decoration:none;
+          padding:8px 12px;
+          border-radius:10px;
+          background:rgba(255,255,255,0.15);
+          border:1px solid rgba(255,255,255,0.2);
         }
 
         .badge-glass{
-          display: inline-block;
-          padding: 6px 12px;
-          border-radius: 999px;
-          background: rgba(255,255,255,0.15);
-          border: 1px solid rgba(255,255,255,0.2);
-          font-size: 12px;
-          margin-bottom: 20px;
+          display:inline-block;
+          padding:6px 12px;
+          border-radius:999px;
+          background:rgba(255,255,255,0.15);
+          border:1px solid rgba(255,255,255,0.2);
+          font-size:12px;
+          margin-bottom:20px;
         }
 
         .hero-title{
-          font-size: 52px;
-          font-weight: 800;
-          line-height: 1.1;
+          font-size:52px;
+          font-weight:800;
+          line-height:1.1;
         }
 
         .highlight{
-          background: linear-gradient(to right, #34d399, #2dd4bf);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          background:linear-gradient(to right,#34d399,#2dd4bf);
+          -webkit-background-clip:text;
+          -webkit-text-fill-color:transparent;
         }
 
         .hero-text{
-          margin-top: 15px;
-          opacity: 0.9;
-          max-width: 420px;
+          margin-top:15px;
+          opacity:0.9;
+          max-width:420px;
         }
 
         .footer-text{
-          font-size: 12px;
-          opacity: 0.6;
+          font-size:12px;
+          opacity:0.6;
         }
 
-        /* RIGHT */
         .right-panel{
-          flex: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(248,249,250,0.92);
-          backdrop-filter: blur(30px);
+          flex:1;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          background:rgba(248,249,250,0.92);
+          backdrop-filter:blur(30px);
         }
 
         .form-box{
-          width: 100%;
-          max-width: 420px;
-          background: rgba(255,255,255,0.75);
-          border: 1px solid rgba(255,255,255,0.5);
-          padding: 40px;
-          border-radius: 22px;
-          box-shadow: 0 25px 60px rgba(0,0,0,0.08);
-          backdrop-filter: blur(25px);
-          animation: fadeIn 0.8s ease;
+          width:100%;
+          max-width:420px;
+          background:rgba(255,255,255,0.75);
+          border:1px solid rgba(255,255,255,0.5);
+          padding:40px;
+          border-radius:22px;
+          box-shadow:0 25px 60px rgba(0,0,0,0.08);
+          backdrop-filter:blur(25px);
+          animation:fadeIn .8s ease;
         }
 
         .title{
-          font-weight: 700;
-          color: #111827;
+          font-weight:700;
+          color:#111827;
         }
 
         .sub-title{
-          font-size: 13px;
-          color: #6b7280;
-          margin-bottom: 20px;
+          font-size:13px;
+          color:#6b7280;
+          margin-bottom:20px;
         }
 
         .register-btn{
-          background: linear-gradient(135deg, #10b981, #34d399);
-          color: white;
-          font-weight: 600;
-          padding: 12px;
-          border-radius: 12px;
-          border: none;
-          transition: 0.3s;
-          box-shadow: 0 10px 30px rgba(16,185,129,0.3);
+          background:linear-gradient(135deg,#10b981,#34d399);
+          color:white;
+          font-weight:600;
+          padding:12px;
+          border-radius:12px;
+          border:none;
+          transition:.3s;
+          box-shadow:0 10px 30px rgba(16,185,129,.3);
         }
 
         .register-btn:hover{
-          transform: translateY(-2px) scale(1.01);
-          box-shadow: 0 15px 40px rgba(16,185,129,0.4);
+          transform:translateY(-2px) scale(1.01);
+          box-shadow:0 15px 40px rgba(16,185,129,.4);
         }
 
-        .form-control, .form-select{
-          border-radius: 12px !important;
-          background: rgba(255,255,255,0.7) !important;
+        .form-control,.form-select{
+          border-radius:12px!important;
+          background:rgba(255,255,255,.7)!important;
         }
 
-        /* ANIMATION */
         @keyframes float{
-          0%,100%{ transform: translateY(0); }
-          50%{ transform: translateY(30px); }
+          0%,100%{transform:translateY(0);}
+          50%{transform:translateY(30px);}
         }
 
         @keyframes fadeIn{
-          from{ opacity:0; transform: translateY(10px); }
-          to{ opacity:1; transform: translateY(0); }
+          from{opacity:0;transform:translateY(10px);}
+          to{opacity:1;transform:translateY(0);}
         }
 
         @media(max-width:768px){
-          .left-panel{ display:none; }
+          .left-panel{display:none;}
         }
+
       `}</style>
 
     </div>

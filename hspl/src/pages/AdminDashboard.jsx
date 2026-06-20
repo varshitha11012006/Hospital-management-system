@@ -12,7 +12,7 @@ function AdminDashboard() {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/appointments/all"
+        "https://hospital-management-mern-q5r4.onrender.com/api/appointments/all"
       );
 
       setAppointments(res.data);
@@ -30,7 +30,7 @@ function AdminDashboard() {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   const deleteAppointment = async (id) => {
@@ -42,7 +42,7 @@ function AdminDashboard() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/appointments/${id}`
+        `https://hospital-management-mern-q5r4.onrender.com/api/appointments/${id}`
       );
 
       loadAppointments();
