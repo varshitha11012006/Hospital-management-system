@@ -15,7 +15,7 @@ function DoctorDashboard() {
       setLoading(true);
 
       const res = await axios.get(
-        `http://localhost:5000/api/appointments/doctor/${user._id}`
+        `${import.meta.env.VITE_API_URL}/appointments/doctor/${user._id}`
       );
 
       setAppointments(res.data);
@@ -47,7 +47,7 @@ function DoctorDashboard() {
   const saveNote = async (id) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/appointments/note/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/appointments/note/${id}`,
         {
           note: notes[id] || "",
         }
@@ -64,7 +64,7 @@ function DoctorDashboard() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/appointments/status/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/appointments/status/${id}`,
         {
           status,
         }

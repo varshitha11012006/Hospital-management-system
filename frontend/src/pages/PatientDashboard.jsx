@@ -17,7 +17,7 @@ function PatientDashboard() {
   const loadAppointments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/appointments/patient/${user._id}`
+        `${import.meta.env.VITE_API_URL}/api/appointments/patient/${user._id}`
       );
 
       setAppointments(res.data);
@@ -29,7 +29,7 @@ function PatientDashboard() {
   const loadDoctors = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/auth/doctors"
+        `${import.meta.env.VITE_API_URL}/api/auth/doctors`
       );
 
       setDoctors(res.data);
@@ -60,7 +60,7 @@ function PatientDashboard() {
       setLoading(true);
 
       await axios.post(
-        "http://localhost:5000/api/appointments/book",
+        `${import.meta.env.VITE_API_URL}/api/appointments/book`,
         {
           patientId: user._id,
           doctorId,
@@ -93,7 +93,7 @@ function PatientDashboard() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/appointments/${id}`
+        `${import.meta.env.VITE_API_URL}/api/appointments/${id}`
       );
 
       loadAppointments();

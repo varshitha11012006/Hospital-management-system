@@ -12,7 +12,7 @@ function AdminDashboard() {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/appointments/all"
+        `${import.meta.env.VITE_API_URL}/api/appointments/all`
       );
 
       setAppointments(res.data);
@@ -42,7 +42,7 @@ function AdminDashboard() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/appointments/${id}`
+        `${import.meta.env.VITE_API_URL}/api/appointments/${id}`
       );
 
       loadAppointments();
