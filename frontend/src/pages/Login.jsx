@@ -16,7 +16,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        "https://hospital-management-mern-q5r4.onrender.com/api/auth/login",
+        "http://localhost:5000/api/auth/login",
         {
           email,
           password,
